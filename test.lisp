@@ -6,25 +6,18 @@
     (setf thing (concatenate 'string "*" thing "*"))
     thing))
 
-(defun ask-for-things()
-  (let ((things (list (ask-for-thing) (ask-for-thing))))
-    things))
-
-(defun ask-for-things-with-greeting()
-  (let ((things (ask-for-things))
-        (greeting "Greeting: "))
-
-        (dolist (item things)
-          (setf greeting (concatenate 'string greeting item ", ")))
-
-    greeting))
-
+(defun print-list(list)
+  (write-line "Your list: ")
+  (let ((result ""))
+    (dolist (item list)
+      (setf result (concatenate 'string result item ", ")))
+    (write-line result)))
 
 (defun ask-command()
   (let ((command (read-line)))
-    (if (string= command "add")
-        (write-line "hello")
-        (write-line "goodbey"))
-    (format t "You entered: ~A~%" command)))
+    (cond ((string= command "add") (let ((item (read-line))) (push item item-list)))
+          ((string= command "get all") (print-list item-list))
+          ((string= command "clear") (setq item-list nil)))
+    (format nil "You entered: ~A" command)))
 
 (princ (ask-command))
