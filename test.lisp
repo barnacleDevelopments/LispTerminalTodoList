@@ -20,4 +20,9 @@
           ((string= command "clear") (setq item-list nil)))
     (format nil "You entered: ~A" command)))
 
-(princ (ask-command))
+(defun start-game()
+  (write-line (format nil "WELCOME TO THE LIST GAME!
+~%COMMANDS:?~% - get all~% - add~% - clear"))
+  (ask-command))
+
+(start-game)
