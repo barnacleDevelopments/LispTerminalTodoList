@@ -21,7 +21,7 @@
     (format nil "You entered: ~A" command)))
 
 (defun start-game()
-  (write-line (format nil "WELCOME TO THE LIST GAME!
+  (write-line (format nil "WELCOME TO THE LIST LISP GAME!
 ~%COMMANDS:?~% - get all~% - add~% - clear"))
   (ask-command))
 
